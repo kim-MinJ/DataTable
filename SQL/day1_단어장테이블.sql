@@ -11,6 +11,11 @@
  * 2. insert 명령으로 샘플값(행)을 추가
              INSERT INTO 테이블명(컬럼명 나열) VALUES (값 나열) ;
  */
+
+-- distinct 키워드 : 컬럼값 하나 조회할 때, 중복을 제거한 결과
+select car from TBL_CARCO2;  --31행 조회
+SELECT distinct car from TBL_CARCO2; -- 18행 조회. car 가 무엇이 있나요? 
+
 -- 1) DDL
 -- 새로운 테이블 tbl_javaword 이름으로 만들기(속성, 칼럼 정의)
 CREATE TABLE tbl_javaword (
@@ -93,6 +98,7 @@ INSERT INTO TBL_JAVAWORD VALUES (
 	autocommit 이 false 일 때는 바로 반영이 안됩니다.
 */
 commit;
+-- commit 을 해줘야 스크립트 실행 하면 반영됨
 
 -- 데이터 조회 : SELECT 명령어로 지정된 컬럼 또는 행을 추출(검색)
 /*
@@ -101,12 +107,12 @@ commit;
  *   [where 컬럼명=값 (조건식)]
  */
 
--- 모든 컬럼과 모든 행 가져오기
+-- 모든 컬럼 (*) 과 모든 행(where 없음) 가져오기
 SELECT * FROM TBL_JAVAWORD ;
 
--- 일부 컬럼 추출
-SELECT english FROM TBL_JAVAWORD ;   -- 전체 행
-SELECT english,STEP  FROM TBL_JAVAWORD ;  -- 전체 행
+-- 모든 행의 '일부' 컬럼 추출
+SELECT english FROM TBL_JAVAWORD ;   -- 전체 행 english 컬럼 조회
+SELECT english,STEP  FROM TBL_JAVAWORD ;  -- 전체 행 english, STEP 컬럼 조회
 
 -- 일부 행 추출 : 1) 전체 행(조건이 없을 때)  2) 조건에 맞는 행 
 SELECT * FROM TBL_JAVAWORD      -- 모든 컬럼
@@ -116,7 +122,7 @@ SELECT * FROM TBL_JAVAWORD      -- 모든 컬럼
 SELECT * FROM TBL_JAVAWORD 
 		 WHERE idx=4;
 		
--- 예시 2 : idx 값이 null 인 행을 조회
+-- 예시 2 : idx 값이 null 인 행을 조회. null 값은 = 아니고 IS 로 조회
 SELECT * FROM TBL_JAVAWORD 
 		 WHERE idx IS null;		
 		 
@@ -124,7 +130,8 @@ SELECT * FROM TBL_JAVAWORD
 SELECT * FROM TBL_JAVAWORD 
 		 WHERE ENGLISH ='private';
 		
--- 예시 4 : korean 값에 '반대' 포함 (like와 %) 한 행을 조회		 
+-- 예시 4 : korean 값에 '반대' 포함한 문자열. 
+-- (like와 %) LIKE '반대%' 는 '반대'로 시작하는, LIKE '%반대'는 반대로 끝나는 조건	 
 SELECT * FROM TBL_JAVAWORD 
 		 WHERE KOREAN LIKE '%반대%';
 
@@ -157,20 +164,21 @@ SELECT * FROM TBL_JAVAWORD
  		 WHERE idx IS NOT NULL;
  		
 		
--- 문제 만들기
+-- 크다,작다 연산 null 값은 제외.
  		SELECT * FROM TBL_JAVAWORD 
  				WHERE idx > 5;
  		SELECT * FROM TBL_JAVAWORD 
  				WHERE idx <= 5;	
--- 크다,작다 연산 null 값은 제외.
 
 -- 2개 이상의 컬럼으로 조건식 만들기 가능합니다. : and, or
 SELECT * FROM TBL_JAVAWORD 
-		WHERE ENGLISH LIKE 'd%' AND step =1;
+		WHERE ENGLISH LIKE 'd%' and step =1;
  			
 -- 문자열 함수 : length, upper, lower, substr , replace, instr...
--- 컬럼 값에 적용하여 조회하기 			
-SELECT UPPER(english), LENGTH(english)
+-- 컬럼 값에 적용하여 조회하기. 함수 실행 결과로 새로운 컬럼이 만들어 집니다. 
+-- as 를 사용하여 컬럼의 별칭을 정합니다.
+select english from TBL_JAVAWORD; 			
+SELECT UPPER(english) as "대문자", LENGTH(english) as "길이"
 	FROM TBL_JAVAWORD ;
 
 
