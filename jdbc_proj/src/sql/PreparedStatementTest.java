@@ -12,6 +12,7 @@ public class PreparedStatementTest {
     public static void main(String[] args) {
         PreparedStatement pstat = null; // 마지막에 close 필요
         Connection conn = OracleConnection.getConnection();
+
         try {
             String sql = "INSERT INTO tbl_javadict(idx,english,korean,step) "
                     + "VALUES (?, ?, ?, ?)";
