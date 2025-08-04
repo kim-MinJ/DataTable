@@ -1,0 +1,33 @@
+루시와 엘라 찾기
+답 : 
+SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+WHERE NAME in ('Ella','Lucy', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
+order by ANIMAL_ID;
+
+3월에 태어난 여성 회원 목록 출력하기
+답 : 
+SELECT MEMBER_ID, MEMBER_NAME, GENDER,to_char(DATE_OF_BIRTH, 'yyyy-mm-dd')
+from MEMBER_PROFILE
+where TLNO is not NULL
+and gender = 'W'
+and extract(month from DATE_OF_BIRTH) = 3
+order by MEMBER_ID;
+
+조건에 맞는 도서와 저자 리스트 출력하기
+답 : 
+SELECT BOOK_ID, AUTHOR_NAME, to_char(PUBLISHED_DATE, 'YYYY-MM-DD') as PUBLISHED_DATE
+from BOOK bk
+join AUTHOR ath
+on bk.AUTHOR_ID = ath.AUTHOR_ID and CATEGORY = '경제'
+order by PUBLISHED_DATE;
+
+자동차 평균 대여 기간 구하기
+답 : 
+SELECT CAR_ID,
+       ROUND(AVG(DATEDIFF(END_DATE, START_DATE) + 1), 1) AS AVERAGE_DURATION
+FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+GROUP BY CAR_ID
+HAVING AVERAGE_DURATION >= 7
+ORDER BY AVERAGE_DURATION DESC, CAR_ID DESC
+

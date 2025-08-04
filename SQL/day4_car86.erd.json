@@ -4,9 +4,9 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -348.4636,
-    "scrollLeft": -136.0268,
-    "zoomLevel": 0.79,
+    "scrollTop": 0,
+    "scrollLeft": 0,
+    "zoomLevel": 1,
     "show": 487,
     "database": 8,
     "databaseName": "트럭렌탈",
