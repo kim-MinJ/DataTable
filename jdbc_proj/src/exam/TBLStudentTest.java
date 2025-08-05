@@ -59,11 +59,10 @@ public class TBLStudentTest {
             // setInt(3,null) 불가. 오라클에서는 문자열을 number 타입으로 자동캐스팅
             pstat.setString(4, address);
 
-            pstat.executeUpdate();
+            pstat.executeUpdate(); // 이 커넥션 방식은 commit 을 직접하지 않아도 close 할 때 커밋을 수행합니다.
             // int test = Integer.parseInt(name); //rollback 테스트할 NumberFormatException 예외
             // 발생
-            // conn.rollback(); -- insert 명령이 테이블에 반영이 안됩니다.
-            // conn.commit();
+
             System.out.println("1개 행이 저장되었습니다.");
         } catch (SQLException | NumberFormatException e) {
             try {
