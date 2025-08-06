@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   <mapper namespace="mybatis.mapper.BuyMapper">
+    <select id="selectByCustomer" parameterType="String" resultType="BuyVo">
+        select * from TBL_BUY where CUSTOMER_ID=#{CUSTOMER_ID}
+    </select>
+
+    <select id="selectByPcode" parameterType="String" resultType="BuyVo">
+        select * from TBL_BUY where PCODE=#{PCODE}
+    </select>
+
+    <select id="selectByYear" parameterType="int" resultType="BuyVo">
+        select * from TBL_BUY where to_char(BUY_DATE,'yyyy')=#{BUY_DATE}
+    </select>
+
+    <select id="selectSumByPcode" parameterType="String" resultType="int">
+        select sum(quantity) from TBL_BUY where pcode=#{PCODE}
+    </select>
+
+
+
+   </mapper>

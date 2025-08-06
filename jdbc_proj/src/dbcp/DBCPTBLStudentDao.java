@@ -15,7 +15,7 @@ public class DBCPTBLStudentDao {
     try ( // try with resources : 자동 close
         // DBCP 를 제공하는 dataSource 로 Connection 객체 생성
         // conn.close() 자원 종료가 아니라 자원 DBCP에 반납
-        Connection conn = dataSource.getConnection();
+        Connection conn = dataSource.getConnection(); 
         PreparedStatement pstat = conn.prepareStatement(sql);) {
       pstat.setString(1, address);
       pstat.setString(2, stuno);
