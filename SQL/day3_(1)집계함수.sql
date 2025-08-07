@@ -37,6 +37,7 @@ WHERE WEIGHT < 1000;
 SELECT car, COUNT(*) as "브랜드 갯수"
 FROM TBL_CAR_CO2
 WHERE car = 'Ford';
+-- GROUP BY CAR;
 
 -- 2. avg 함수 (평균 구하기)
 -- 1) CO2 평균 (NULL 제외 평균 구함.)

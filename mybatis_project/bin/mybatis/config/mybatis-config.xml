@@ -14,13 +14,14 @@
   		<typeAlias type="mybatis.vo.ProductVo" alias="ProductVo"/>
   		<typeAlias type="mybatis.vo.StudentVo" alias="StudentVo"/>
   		<typeAlias type="mybatis.vo.BuyVo" alias="BuyVo"/>
+  		<typeAlias type="mybatis.vo.CustomerBuyVo" alias="CustomerBuyVo"/>
   </typeAliases>
   
   <!--  jdbc 의 db 연결정보 -->
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
-      <!--  DBCP 설정 : ${} 매개변수 지정 -->
+      <!--  DBCP 설정 : ${} 매개변수 지정-->
       <dataSource type="POOLED">  
         <property name="driver" value="${driver}"/>
         <property name="url" value="${url}"/>

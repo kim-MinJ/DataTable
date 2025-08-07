@@ -1,26 +1,25 @@
 package mybatis.vo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
-@AllArgsConstructor
 @Getter
 @Setter
-
+@RequiredArgsConstructor
 public class BuyVo {
-    private Integer buy_seq;
-    private String customer_id;
-    private String pcode;
-    private int quantity;
-    private Date buy_date;
+    private final Integer buy_seq;
+    private final String customer_id;
+    private final String pcode;
+    private final Integer quantity;
+    private final Timestamp buy_date;
 
     @Override
     public String toString() {
-        return buy_seq + ", customer_id=" + customer_id + ", pcode=" + pcode + ", quantity="
-                + quantity + ", buy_date=" + buy_date;
+        return "\n" + buy_seq + " \t " + customer_id + "\t" + pcode + "\t" + quantity
+                + "\t" + buy_date + "\n";
     }
+
 }
